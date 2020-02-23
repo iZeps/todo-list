@@ -1,15 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="training.programming.util.Mappings" %>
-
+<!DOCTYPE html>
 <html>
     <head>
         <title>Todo Items</title>
     </head>
     <body>
-        <div align="center">
+        <div>
             <c:url var="addUrl" value="${Mappings.ADD_ITEM}"/>
             <a href="${addUrl}">New Item</a>
-            <table border="1" cellpadding="5">
+            <table border="1">
 
                 <caption><h2>Todo Items</h2></caption>
 

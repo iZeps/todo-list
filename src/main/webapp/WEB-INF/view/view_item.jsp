@@ -1,13 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="training.programming.util.Mappings" %>
-
+<!DOCTYPE html>
 <html>
     <head>
         <title>View Item: <c:out value="${todoItem.title}"/></title>
     </head>
     <body>
-        <div align="center">
-            <table border="1" cellpadding="5">
+        <div>
+            <table border="1">
 
                 <caption><h2>View Item: <c:out value="${todoItem.title}"/></h2></caption>
 
