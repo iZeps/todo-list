@@ -18,7 +18,7 @@ public class TodoData {
     // constructor
     public TodoData() {
         // add dummy data
-        addItem(new TodoItem("fist", "first details", LocalDate.now()));
+        addItem(new TodoItem("first", "first details", LocalDate.now()));
         addItem(new TodoItem("second", "second details", LocalDate.now()));
         addItem(new TodoItem("third", "third details", LocalDate.now()));
         addItem(new TodoItem("fourth", "fourth details", LocalDate.now()));

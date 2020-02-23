@@ -1,5 +1,8 @@
 package training.programming.util;
 
+/**
+ * Class containing constants for view names used by the model view controller.
+ */
 public final class ViewNames {
 
     // constants
@@ -8,6 +11,8 @@ public final class ViewNames {
     public static final String HOME = "home";
     public static final String VIEW_ITEM = "view_item";
 
-    private ViewNames() {};
+    // constructors
+    private ViewNames() {
+    }
 
 }

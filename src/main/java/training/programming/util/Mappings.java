@@ -1,5 +1,8 @@
 package training.programming.util;
 
+/**
+ * Class containing constants for GET request mapping names used by the model view controller.
+ */
 public final class Mappings {
 
     // constants
