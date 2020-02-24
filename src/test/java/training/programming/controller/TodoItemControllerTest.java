@@ -3,9 +3,7 @@ package training.programming.controller;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.Spy;
+import org.mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestContext;
@@ -39,18 +37,24 @@ public class TodoItemControllerTest {
 
     private MockMvc mockMvc;
 
-    @Autowired
+    @Mock
     private TodoItemService todoItemServiceMock;
+
+    @InjectMocks
+    TodoItemController todoItemController;
 
     @Autowired
     private WebApplicationContext webApplicationContext;
 
     @Before
     public void setUp() {
-        todoItemServiceMock = mock(TodoItemServiceImpl.class);
-        Mockito.reset(todoItemServiceMock);
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-                .build();
+//        todoItemServiceMock = mock(TodoItemServiceImpl.class);
+//        Mockito.reset(todoItemServiceMock);
+        MockitoAnnotations.initMocks(this);
+
+//        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
+//                .build();
+        this.mockMvc =  MockMvcBuilders.standaloneSetup(todoItemController).build();
     }
 
     @Test
@@ -58,7 +62,7 @@ public class TodoItemControllerTest {
         mockMvc.perform(get("/items"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("items_list"))
-                .andExpect(forwardedUrl("/WEB-INF/view/items_list.jsp"));
+                .andExpect(forwardedUrl("items_list"));
     }
 
     @Test
@@ -69,11 +73,11 @@ public class TodoItemControllerTest {
         mockMvc.perform(get("/viewItem?id={id}",1))
                 .andExpect(status().isOk())
                 .andExpect(view().name("view_item"))
-                .andExpect(forwardedUrl("/WEB-INF/view/view_item.jsp"))
+                .andExpect(forwardedUrl("view_item"))
                 .andExpect(model().attribute(AttributeName.TODO_ITEMS, hasProperty("title", is("title"))))
                 .andExpect(model().attribute(AttributeName.TODO_ITEMS, hasProperty("details", is("details"))));
 
-        verify(todoItemServiceMock.getItem(1));
+        verify(todoItemServiceMock, times(1)).getItem(1);
     }
 
     @Test
