@@ -1,43 +1,43 @@
 package training.programming.model;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
-class TodoDataTest {
+public class TodoDataTest {
 
     private TodoData todoData;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         todoData = new TodoData();
     }
 
     @Test
-    void shouldGetAllItemsInDataObject() {
+    public void shouldGetAllItemsInDataObject() {
         int actual = todoData.getItems().size();
         assertEquals(4, actual);
     }
 
     @Test
-    void shouldAddItemToDataObject() {
+    public void shouldAddItemToDataObject() {
         todoData.addItem(new TodoItem("title", "details", LocalDate.now()));
         int actual = todoData.getItems().size();
         assertEquals(5, actual);
     }
 
     @Test
-    void shouldRemoveItemFromDataObject() {
+    public void shouldRemoveItemFromDataObject() {
         todoData.removeItem(2);
         assertNull(todoData.getItem(2));
     }
 
     @Test
-    void shouldGetItemFromDataObject() {
+    public void shouldGetItemFromDataObject() {
         TodoItem todoItem = new TodoItem("title", "details", LocalDate.now());
         todoData.addItem(todoItem);
         String actual = todoData.getItem(todoItem.getId()).getTitle();
@@ -45,7 +45,7 @@ class TodoDataTest {
     }
 
     @Test
-    void shouldUpdateExistingItemInDataObject() {
+    public void shouldUpdateExistingItemInDataObject() {
         TodoItem todoItem = new TodoItem("title", "details", LocalDate.now());
         todoData.addItem(todoItem);
         todoItem.setTitle("changed");
