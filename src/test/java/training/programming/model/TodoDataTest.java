@@ -2,11 +2,11 @@ package training.programming.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class TodoDataTest {
 
@@ -49,7 +49,12 @@ class TodoDataTest {
         TodoItem todoItem = new TodoItem("title", "details", LocalDate.now());
         todoData.addItem(todoItem);
         todoItem.setTitle("changed");
+        todoItem.setDeadline(LocalDate.of(1990,4,7));
+        todoItem.setDetails("also changed");
         todoData.updateItem(todoItem);
+
         assertEquals("changed", todoData.getItem(todoItem.getId()).getTitle());
+        assertEquals("also changed", todoData.getItem(todoItem.getId()).getDetails());
+        assertEquals(LocalDate.of(1990,4,7), todoData.getItem(todoItem.getId()).getDeadline());
     }
 }
