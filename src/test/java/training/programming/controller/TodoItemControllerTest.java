@@ -107,7 +107,7 @@ public class TodoItemControllerTest {
     @Test
     public void shouldAddNewItemAndGoToItemsView() throws Exception {
         TodoItem item = new TodoItem("new","new", LocalDate.now());
-
+        doNothing().when(todoItemServiceMock).addItem(item);
         mockMvc.perform(post("/addItem")
                 .flashAttr("todoItem", item)
         )
@@ -116,12 +116,15 @@ public class TodoItemControllerTest {
                 .andExpect(redirectedUrl("/items"))
                 .andExpect(model().attribute(AttributeName.TODO_ITEMS, hasProperty("title", is("new"))))
                 .andExpect(model().attribute(AttributeName.TODO_ITEMS, hasProperty("details", is("new"))));
+
+        verify(todoItemServiceMock, times(1)).addItem(item);
     }
 
     @Test
     public void shouldUpdateItemAndGoToItemsView() throws Exception {
         TodoItem item = new TodoItem("first changed","first changed", LocalDate.now());
         item.setId(1);
+        doNothing().when(todoItemServiceMock).updateItem(item);
         mockMvc.perform(post("/addItem")
                 .flashAttr("todoItem", item)
         )
@@ -130,5 +133,7 @@ public class TodoItemControllerTest {
                 .andExpect(redirectedUrl("/items"))
                 .andExpect(model().attribute(AttributeName.TODO_ITEMS, hasProperty("title", is("first changed"))))
                 .andExpect(model().attribute(AttributeName.TODO_ITEMS, hasProperty("details", is("first changed"))));
+
+        verify(todoItemServiceMock, times(1)).updateItem(item);
     }
 }
