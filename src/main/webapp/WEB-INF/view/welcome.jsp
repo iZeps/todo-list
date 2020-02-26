@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Welcome</title>
+        <link href="<c:url value="/resources/style.css" />" rel="stylesheet">
     </head>
     <body>
         <h1>${helloMessage}</h1>

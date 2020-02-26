@@ -5,6 +5,7 @@
 <html>
     <head>
         <title>Add Items</title>
+        <link href="<c:url value="/resources/style.css" />" rel="stylesheet">
     </head>
     <body>
         <div>

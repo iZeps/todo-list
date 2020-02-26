@@ -4,11 +4,12 @@
 <html>
     <head>
         <title>Todo Items</title>
+        <link href="<c:url value="/resources/style.css" />" rel="stylesheet">
     </head>
     <body>
         <div>
             <c:url var="addUrl" value="${Mappings.ADD_ITEM}"/>
-            <a href="${addUrl}">New Item</a>
+            <a class="margin-top color" href="${addUrl}">New Item</a>
             <table border="1">
 
                 <caption><h2>Todo Items</h2></caption>

@@ -4,6 +4,7 @@
 <html>
     <head>
         <title>View Item: <c:out value="${todoItem.title}"/></title>
+        <link href="<c:url value="/resources/style.css" />" rel="stylesheet">
     </head>
     <body>
         <div>
@@ -28,7 +29,7 @@
             </table>
 
             <c:url var="itemsLink" value="${Mappings.ITEMS}"/>
-            <a href="${itemsLink}">Back to All</a>
+            <a class="margin-top color" href="${itemsLink}">Back to All</a>
         </div>
     </body>
 </html>
